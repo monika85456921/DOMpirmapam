@@ -78,7 +78,7 @@ divas2.appendChild(myButton);
 // divas2.appendChild(myButton2);
 // divas2.appendChild(myButton3);
 // divas2.appendChild(myButton4);
-divas.append(myButton2,myButton3,myButton4)
+divas.append(myButton2, myButton3, myButton4);
 //jei daugiau nei 1 child
 divas2.append(myButton, img);
 
@@ -108,28 +108,83 @@ myButton4.innerText = "Click!4";
 // antrasVaikas[1].textContent += " cia antras paragrafas";
 
 //isimti
-const span = document.querySelector("span");
-span.remove();
+// const span = document.querySelector("span");
+// span.remove();
 
 ////eventai prideti
-myButton.addEventListener("click", () => {
-  if (myButton.style.backgroundColor === "blue") {
-    myButton.style.backgroundColor = "green";
-  } else {
-    myButton.style.backgroundColor = "blue";
-  }
-});
-
+myButton.addEventListener(
+  "click",
+  () => {
+    if (myButton.style.backgroundColor === "blue") {
+      myButton.style.backgroundColor = "green";
+    } else {
+      myButton.style.backgroundColor = "blue";
+    }
+  },
+  { once: true }
+);
+//
 //// eventas-  isimti ji (retai naudojamas)
-myButton.removeEventListener("click", () => {
-  console.log("event listener removed");
-});
+// myButton.removeEventListener("click", () => {
+//   console.log("event listener removed");
+// });
 
 ///kai reikia daugiau pvz:mygtuku paselektinti
 
-const buttonsGroup = document.querySelectorAll('button')
-console.log(buttonsGroup)
+const buttonsGroup = document.querySelectorAll("button");
+console.log(buttonsGroup);
 
-buttonsGroup.forEach((el,ind) => el.addEventListener("click",()=>{
-    
-}));
+buttonsGroup.forEach((el, ind) =>
+  el.addEventListener("click", () => {
+    console.log(`You clicked button ${el.innerText}`);
+  })
+);
+// event.value
+const forma = document.querySelector("form");
+const inputas = document.querySelector("input");
+const submitas = document.querySelector("form>button");
+console.log(forma, inputas, submitas);
+
+//ir irasyti ka irasome i local storage
+const array = [];
+let counter = 0;
+
+submitas.addEventListener("click", (event) => {
+  event.preventDefault();
+  counter++;
+  const inputValue = inputas.value;
+  console.log(inputValue);
+
+  const person = {
+    id: CountQueuingStrategy,
+    name: inputValue,
+  };
+
+  array.push(person);
+  console.log(array);
+  localStorage.setItem("zmones", JSON.stringify(array));
+  //   input.value=""
+  forma.reset();
+});
+// event.target paiimti elementa kuriam buvo ivykdytas ivykis
+
+submitas.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(e.target);
+});
+
+const editInput = document.querySelector("#edit");
+const editas = document.querySelector("#editbutton");
+console.log(editInput, editas);
+
+editas.addEventListener("click", (e) => {
+  e.preventDefault;
+
+  const editable = parse.int(editInput.value);
+  console.log(editable);
+const fromLs =JSON.parse(localStorage.getItem('zmones'))
+console.log(zmones)
+const founded = fromLs.find(el=>el.id ===editable)
+console.log(founded)
+// from[founded].name
+});
